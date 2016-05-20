@@ -31,10 +31,10 @@ string ex(string s)
 /*
 	Get the alguments for "all"
 */
-string get_alguments_all(vector<node> path)
+string get_alguments_all(vector<Node> path)
 {
 	string alguments_all = "{";
-	vector<node>::iterator it;
+	vector<Node>::iterator it;
 	
 	for(it = path.begin(); it != path.end(); it++)
 	{
@@ -69,12 +69,12 @@ string get_alguments_ex()
 /*
 	Get bounds inequaltions 
 */
-string get_bounds_inequaltions(string lower_bound, string upper_bound, vector<node> path)
+string get_bounds_inequaltions(string lower_bound, string upper_bound, vector<Node> path)
 {
 	string bounds_inequaltions;
 	stringstream st;
 	bounds_inequaltions = "(" + lower_bound + "<=";
-	vector<node>::iterator it;
+	vector<Node>::iterator it;
 	for(it = path.begin(); it != path.end(); it++)
 	{
 		if( it != path.end() -1 )

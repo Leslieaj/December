@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class node 
+class Node 
 {
 	public:
 		void setName(string x)
@@ -24,9 +24,11 @@ class node
 		{
 			return time;
 		}
+
 	private:
 		string name;
 		string time;
 };
+
 
 #endif

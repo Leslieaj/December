@@ -21,7 +21,7 @@ string ex(string s);
 /*
 	Get the alguments for "all"
 */
-string get_alguments_all(vector<node> path);
+string get_alguments_all(vector<Node> path);
 
 /*
 	Get alguments for "ex"
@@ -32,7 +32,7 @@ string get_alguments_ex();
 /*
 	Get bounds inequaltions 
 */
-string get_bounds_inequaltions(string lower_bound, string upper_bound, vector<node> path);
+string get_bounds_inequaltions(string lower_bound, string upper_bound, vector<Node> path);
 
 /*
     consider chop at one point to generate the inequaltions

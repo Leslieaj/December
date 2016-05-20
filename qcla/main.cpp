@@ -17,20 +17,20 @@ extern void analyze_interval(string interval);
 int main(int argc, char** argv) {
 
 	string tempPath[] = {"s1","s2","s3","s1","s4"};
-	string formula = " [ 4 ,  5 ] | ( -s1  + 2 * s2) <= 4 ; (s3 + s4) <= 1";
+	string formula = " [ 4 ,  5 ] | ( -s1  - 2 * s2) <= 4 ; ((-2)*s1 + s4) <= 1";
 	int length = sizeof(tempPath)/sizeof(string);
 	
 	ELDI phi;
+	phi.setEldi(formula);
+	show(phi);
 
-	
-	cout << length << endl;
-	string lower_bound = "4";
-	string upper_bound = "5";
-	vector<node> path;
-	vector<node>::iterator pathIT;
+	string lower_bound = phi.getlowerB();
+	string upper_bound = phi.getupperB();
+	vector<Node> path;
+	vector<Node>::iterator pathIT;
 	for(int i = 0; i < length; i++)
 	{
-		node tempnode;
+		Node tempnode;
 		char temptime = 'a'+ i;
 		stringstream stream;
 		stream << temptime;
@@ -53,7 +53,8 @@ int main(int argc, char** argv) {
 	bounds_inequaltions_expression = get_bounds_inequaltions(lower_bound, upper_bound, path);
 	all_expression = all(alguments_all + bounds_inequaltions_expression + " impl " + ex_expression);
 
-	phi.setEldi(formula);
+
+	
 
 	return 0;
 }

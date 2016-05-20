@@ -27,7 +27,7 @@ string remove_char(string s, char c)
 void analyze_formula(string formula, string &interval, string &eldi_formula)
 {
 	int formula_len = formula.length();
-	cout << formula_len << endl;
+	//cout << formula_len << endl;
 	
 	string temp = "";
 	//string interval;
@@ -76,11 +76,11 @@ void analyze_eldi(string expression, vector<string>& sequence)
 	}
 	sequence.push_back(temp);
 	
-	vector<string>::iterator it;
-	for(it = sequence.begin(); it != sequence.end(); it++)
-	{
-		cout << *it << endl;	
-	}
+	//vector<string>::iterator it;
+	//for(it = sequence.begin(); it != sequence.end(); it++)
+	//{
+	//	cout << *it << endl;	
+	//}
 	//return ldi_sequence;
 }
 
@@ -104,12 +104,12 @@ void analyze_interval(string interval, string &lowerB, string &upperB)
 	//string upperB;
 	upperB = getbound(upperB_in_it);
 
-	cout << length << endl;
-	cout << comma_index << endl;
-	cout << lowerB_in_it << endl;
-	cout << upperB_in_it << endl;
-	cout << lowerB << endl;
-	cout << upperB << endl;
+	//cout << length << endl;
+	//cout << comma_index << endl;
+	//cout << lowerB_in_it << endl;
+	//cout << upperB_in_it << endl;
+	//cout << lowerB << endl;
+	//cout << upperB << endl;
 }
 
 string getbound(string s)
@@ -131,9 +131,9 @@ string getbound(string s)
 /*
 	analyze LDI to get each location and coefficient and value
 */
-void analyze_ldi(string expression, string &value)
+void analyze_ldi(string expression, string &value, vector<Location> &location_sequence)
 {
-	vector<Location> location_sequence;
+	//vector<Location> location_sequence;
 	int length = expression.length();
 	string mvalue_in_it = "";
 	int lessthan_index;
@@ -147,19 +147,30 @@ void analyze_ldi(string expression, string &value)
 	lc_in_it = remove_char(lc_in_it, ' ');
 	lc_in_it = remove_char(lc_in_it, '(');
 	lc_in_it = remove_char(lc_in_it, ')');
-	cout << lc_in_it << endl;
 	int lc_length = lc_in_it.length();
 	string lc_temp = "";
-	if(lc_in_it[0] == '-' || lc_in_it[0] == '+')
-	{
-		lc_temp = lc_temp + lc_in_it[0];
-	}
+
 	for(int i = 0; i < lc_length; i++)
 	{
-		if(lc_in_it[i] != '+')
+		if(lc_in_it[i] == '-' && lc_temp == "")
 		{
 			lc_temp = lc_temp + lc_in_it[i];
 			continue;
+		}
+		if(lc_in_it[i] != '+')
+		{
+			if(lc_in_it[i] != '-')
+			{
+				lc_temp = lc_temp + lc_in_it[i];
+				continue;
+			}
+			else
+			{
+				location_and_coefficient.push_back(lc_temp);
+				lc_temp = '-';
+				continue;
+			}
+
 		}
 		else
 		{
@@ -175,7 +186,7 @@ void analyze_ldi(string expression, string &value)
 	{
 		Location location;
 		string temp = *lc_it;
-		cout << *lc_it << endl;
+		//cout << *lc_it << endl;
 		location.setLocation(temp);
 		location_sequence.push_back(location);
 	}
@@ -196,4 +207,24 @@ string getMvalue(string s)
 	}
 	
 	return temp;
+}
+
+/*
+	build a matrix to connact the critical location and coefficient
+*/
+void show(ELDI &eldi)
+{
+	vector<LDI> ldi_sequence = eldi.getEldi();
+	vector<LDI>::iterator ldis_it;
+	for(ldis_it = ldi_sequence.begin(); ldis_it != ldi_sequence.end(); ldis_it++)
+	{
+		vector<Location> location_sequence = (*ldis_it).getLdi();
+		vector<Location>::iterator location_it;
+		for(location_it = location_sequence.begin(); location_it != location_sequence.end(); location_it++)
+		{
+			Location location = *location_it;
+			cout << "(" + location.getName() + ", " + location.getCoefficients() + ") ";
+		}
+		cout << endl;
+	}
 }

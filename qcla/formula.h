@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include "eldi.h"
 using namespace std;
 
 /*
@@ -29,8 +30,14 @@ string getbound(string s);
 /*
 	analyze LDI to get each location and coefficient
 */
-void analyze_ldi(string expression, string &value);
+void analyze_ldi(string expression, string &value, vector<Location> &location_sequence);
 string getMvalue(string s);
+
+/*
+	build a matrix to connact the critical location and coefficient
+*/
+void show(ELDI &eldi);
+
 #endif
 
 

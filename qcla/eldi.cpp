@@ -15,19 +15,21 @@ void ELDI::setEldi(string formula)
 	setInterval(interval_temp);
 	setEldiExpression(eldi_expression_temp);
 	
-	cout << formula << endl;
-	cout << getInterval() << endl;
-	cout << getEldiExpression() << endl;
+	//cout << formula << endl;
+	//cout << getInterval() << endl;
+	//cout << getEldiExpression() << endl;
 	
 	analyze_eldi(getEldiExpression(), ldi_sequence);
 	analyze_interval(interval, lowerB, upperB);
-	
+	setLB(lowerB);
+	setUB(upperB);
 	vector<string>::iterator eldi_it;
 	for(eldi_it = ldi_sequence.begin(); eldi_it != ldi_sequence.end(); eldi_it++)
 	{
 		LDI ldi;
 		string temp = *eldi_it;
 		ldi.setLdi(temp);
+		eldi.push_back(ldi);
 	}
 	
 }

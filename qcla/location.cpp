@@ -33,7 +33,5 @@ void Location::setLocation(string expression)
 			name = expression;
 		}
 	}
-	cout << coefficient_s << " " << name << endl;
-	//cout << multi_index << endl;
 	
 }
