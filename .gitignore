@@ -1,0 +1,7 @@
+qcla/eldi.o
+qcla/expression.o
+qcla/formula.o
+qcla/ldi.o
+qcla/location.o
+qcla/main.o
+qcla/node.o
