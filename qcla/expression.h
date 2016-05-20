@@ -44,8 +44,4 @@ string onechop_inequaltions(int chop_point_location);
 */
 string generateELDI_inequaltions();
 
-
-
-
-
 #endif
