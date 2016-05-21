@@ -212,12 +212,13 @@ string getMvalue(string s)
 /*
 	build a matrix to connact the critical location and coefficient
 */
-void build_matrix(ELDI &eldi, vector< vector<Lcnode> > &matrix)
+void build_matrix(ELDI &eldi, vector< vector<Lcnode> > &matrix, vector<string> &mvalue)
 {
 	vector<LDI> ldi_sequence = eldi.getEldi();
 	vector<LDI>::iterator ldis_it;
 	for(ldis_it = ldi_sequence.begin(); ldis_it != ldi_sequence.end(); ldis_it++)
 	{
+		mvalue.push_back((*ldis_it).getValue());
 		vector<Lcnode> lcnode_sequence;
 		vector<Location> location_sequence = (*ldis_it).getLdi();
 		vector<Location>::iterator location_it;

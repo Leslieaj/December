@@ -37,7 +37,7 @@ string getMvalue(string s);
 /*
 	build a matrix to connact the critical location and coefficient
 */
-void build_matrix(ELDI &eldi, vector< vector<Lcnode> > &matrix);
+void build_matrix(ELDI &eldi, vector< vector<Lcnode> > &matrix, vector<string> &mvalue);
 void show(ELDI &eldi);
 
 #endif

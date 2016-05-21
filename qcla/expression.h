@@ -38,12 +38,16 @@ string get_bounds_inequaltions(string lower_bound, string upper_bound, vector<No
 /*
     consider chop at one point to generate the inequaltions
 */
-string onechop_inequaltions(vector<Node> &path, ELDI &eldi);
+string onechop_inequaltions(vector<string> mvalue, vector<Node> &path, vector< vector<Lcnode> > &matrix);
 
 /*
 	build antecedent
 */
 string build_antecedent(int node_index);
+
+string chop_lefttime(string m, Node node);
+
+string ldi_inequaltions(string value, int flag, vector<Node> &node_path, vector< vector<Lcnode> > &matrix);
 
 /*
 	From ELDI to alguments inequaltions
