@@ -17,7 +17,7 @@ extern void analyze_interval(string interval);
 int main(int argc, char** argv) {
 
 	string tempPath[] = {"s1","s2","s3"};
-	string formula = " [ 0 ,  6 ] |  s1  <= 2 ; s2 <= 1";
+	string formula = " [ 0 ,  6 ] |  s1  <= 2 ; s2  <= 1";
 	int length = sizeof(tempPath)/sizeof(string);
 	
 	ELDI phi;

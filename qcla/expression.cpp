@@ -9,7 +9,7 @@ string all(string s)
 {
 	stringstream st;
 	string final;
-	st << "all" << "(" << s << ")";
+	st << "phi := " << "all" << "(" << s << ")";
 	final = st.str();
 	cout << final << endl;
 	return final;
@@ -157,6 +157,7 @@ string ldi_inequaltions(string value, int flag, vector<Node> &node_path, vector<
 	string temp = "";
 	vector< vector<Lcnode> >::iterator matrix_it = matrix.begin()+flag;
 	vector<Node>::iterator node_it;
+	bool first_matched = false; 
 	for(node_it = node_path.begin(); node_it != node_path.end(); node_it++)
 	{
 		Node node = *node_it;
@@ -210,13 +211,22 @@ string ldi_inequaltions(string value, int flag, vector<Node> &node_path, vector<
 				{
 					if(coefficient_i == 1)
 					{
+						if(first_matched == true)
+						{
+							temp = temp + "+";
+						}
 						temp = temp + staytime;
 					}
 					else
 					{
-						temp = temp + "+" + coefficient_s + "*" + staytime;
+						if(first_matched == true)
+						{
+							temp = temp + "+";
+						}
+						temp = temp + coefficient_s + "*" + staytime;
 					}						
 				}
+				first_matched = true;
 			}
 		}
 	}
