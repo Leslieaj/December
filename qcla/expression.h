@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include "node.h"
+#include "eldi.h"
 //using namespace std;
 
 /*
@@ -37,11 +38,19 @@ string get_bounds_inequaltions(string lower_bound, string upper_bound, vector<No
 /*
     consider chop at one point to generate the inequaltions
 */
-string onechop_inequaltions(int chop_point_location);
+string onechop_inequaltions(vector<Node> &path, ELDI &eldi);
+
+/*
+	build antecedent
+*/
+string build_antecedent(int node_index);
 
 /*
 	From ELDI to alguments inequaltions
 */
 string generateELDI_inequaltions();
+
+
+
 
 #endif

@@ -212,6 +212,29 @@ string getMvalue(string s)
 /*
 	build a matrix to connact the critical location and coefficient
 */
+void build_matrix(ELDI &eldi, vector< vector<Lcnode> > &matrix)
+{
+	vector<LDI> ldi_sequence = eldi.getEldi();
+	vector<LDI>::iterator ldis_it;
+	for(ldis_it = ldi_sequence.begin(); ldis_it != ldi_sequence.end(); ldis_it++)
+	{
+		vector<Lcnode> lcnode_sequence;
+		vector<Location> location_sequence = (*ldis_it).getLdi();
+		vector<Location>::iterator location_it;
+		for(location_it = location_sequence.begin(); location_it != location_sequence.end(); location_it++)
+		{
+			Lcnode lcnode;
+			Location location = *location_it;
+			lcnode.setName(location.getName());
+			lcnode.setCoefficient(location.getCoefficients());
+			lcnode_sequence.push_back(lcnode);
+			cout << "(" + lcnode.getName() + ", " + lcnode.getCoefficient() + ") ";
+		}
+		matrix.push_back(lcnode_sequence);
+		cout << endl;
+	}
+}
+/*
 void show(ELDI &eldi)
 {
 	vector<LDI> ldi_sequence = eldi.getEldi();
@@ -228,3 +251,4 @@ void show(ELDI &eldi)
 		cout << endl;
 	}
 }
+*/

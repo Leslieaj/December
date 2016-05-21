@@ -30,5 +30,28 @@ class Node
 		string time;
 };
 
+class Lcnode
+{
+	public:
+		void setName(string n)
+		{
+			name = n;
+		}
+		string getName()
+		{
+			return name;
+		}
+		void setCoefficient(string c)
+		{
+			coefficient = c;
+		}
+		string getCoefficient()
+		{
+			return coefficient;
+		}
+	private:
+		string name;
+		string coefficient;
+};
 
 #endif

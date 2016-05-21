@@ -90,4 +90,42 @@ string get_bounds_inequaltions(string lower_bound, string upper_bound, vector<No
 	cout << bounds_inequaltions << endl;
 	return bounds_inequaltions;
 }
+/*
+	build antecedent
+*/
+string build_antecedent(int node_index)
+{
+	string antecedent;
+	stringstream sstream;
+	sstream << node_index;
+	string s = sstream.str();
+	antecedent	= "n = " + s;
+	return antecedent;
+}
+
+/*
+    consider chop at one point to generate the inequaltions
+*/
+string onechop_inequaltions(vector<Node> &path, ELDI &eldi)
+{
+	vector<Node>::iterator nodeIT;
+	int node_index;
+	string temp;
+	for(nodeIT = path.begin(), node_index = 1; nodeIT != path.end(); nodeIT++, node_index++)
+	{
+		temp = temp + "(";
+		
+		string antecedent = build_antecedent(node_index);
+		temp = temp + antecedent + " impl ";
+		
+		string node_name = (*nodeIT).getName();
+		
+		temp = temp + ")";
+		if(node_index != path.size())
+		{
+			temp = temp + " and ";
+		}
+	}
+	return temp;
+}
 

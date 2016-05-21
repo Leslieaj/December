@@ -22,7 +22,9 @@ int main(int argc, char** argv) {
 	
 	ELDI phi;
 	phi.setEldi(formula);
-	show(phi);
+	vector< vector<Lcnode> > matrix;
+	//show(phi);
+	build_matrix(phi, matrix);
 
 	string lower_bound = phi.getlowerB();
 	string upper_bound = phi.getupperB();
@@ -44,12 +46,13 @@ int main(int argc, char** argv) {
 	string all_expression;
 	string ex_expression;
 	string bounds_inequaltions_expression;
+	string ldi_inequaltions_expression;
 	
 	alguments_all = get_alguments_all(path);
 	alguments_ex = get_alguments_ex();
-	
+	ldi_inequaltions_expression = onechop_inequaltions(path, phi);
 
-	ex_expression = ex(alguments_ex);
+	ex_expression = ex(alguments_ex + ldi_inequaltions_expression);
 	bounds_inequaltions_expression = get_bounds_inequaltions(lower_bound, upper_bound, path);
 	all_expression = all(alguments_all + bounds_inequaltions_expression + " impl " + ex_expression);
 

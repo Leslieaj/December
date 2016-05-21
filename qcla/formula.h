@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include "node.h"
 #include "eldi.h"
 using namespace std;
 
@@ -36,6 +37,7 @@ string getMvalue(string s);
 /*
 	build a matrix to connact the critical location and coefficient
 */
+void build_matrix(ELDI &eldi, vector< vector<Lcnode> > &matrix);
 void show(ELDI &eldi);
 
 #endif
