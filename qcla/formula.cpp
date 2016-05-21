@@ -200,7 +200,7 @@ string getMvalue(string s)
 	
 	for(int i = 0; i < s_len; i++)
 	{
-		if(s[i] >= '0' && s[i] <= '9')
+		if((s[i] >= '0' && s[i] <= '9')||s[i] == '-')
 		{
 			temp = temp + s[i];
 		}
