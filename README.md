@@ -1,2 +1,2 @@
 # December
-A tool to model checking dense-time Extended Linear Duration Invariants
+A model-checking tool for dense-time Extended Linear Duration Invariants.
