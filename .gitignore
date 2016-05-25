@@ -6,3 +6,4 @@ qcla/location.o
 qcla/main.o
 qcla/node.o
 qcla/test.layout
+qcla/Makefile.win
